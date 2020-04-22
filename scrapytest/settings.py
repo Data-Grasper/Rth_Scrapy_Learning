@@ -52,9 +52,10 @@ IMAGES_STORE = 'E:\\Demo\\python\\scrapytest\\img\\'
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'scrapytest.middlewares.MyCustomDownloaderMiddleware': 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+   'scrapytest.middlewares.RandomUserAgentMiddleware': 543,
+   'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware':None,
+} # 在替换user-agent的时候，我们需要重新写这个类，就可以在middleware里替换user-agent
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
@@ -68,6 +69,9 @@ ITEM_PIPELINES = {
     'scrapytest.MyPipelines.MyPipeline': 100,
     'scrapytest.ImgPipelines.ImgPipeline': 1,
 }
+
+# 在setting中设置一下，让我们的Random-User-Agent更强壮
+RANDOM_UA_TYPE = "random"
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html

@@ -1,11 +1,18 @@
+# 编写爬虫，首先需要创建一个Spider，继承scrapy.Spider类
+# 然后定义三个属性：
+# -name
+# -start_urls
+# parse()方法，主要用于处理response，并返回处理的数据以及跟进URL
+# 该方法和其他Request回调函数必须返回一个包含Request及Item的可迭代对象
+
 import scrapy
 #引入容器
 from scrapytest.CourseItems import CourseItem
 
 class MySpider(scrapy.Spider):
-    #设置name
+    # 设置name：用于区别Spider
     name = "MySpider"
-    #设定域名
+    #设定域名：允许访问的域
     allowed_domains = ["imooc.com"]
     #填写爬取地址
     start_urls = ["http://www.imooc.com/course/list"]

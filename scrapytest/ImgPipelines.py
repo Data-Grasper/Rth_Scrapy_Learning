@@ -1,5 +1,5 @@
 import scrapy
-from scrapy.contrib.pipeline.images import ImagesPipeline
+from scrapy.pipelines.images import ImagesPipeline
 from scrapy.exceptions import DropItem
 
 class ImgPipeline(ImagesPipeline):
